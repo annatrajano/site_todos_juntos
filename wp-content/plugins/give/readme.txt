@@ -1,11 +1,11 @@
 === GiveWP - Donation Plugin and Fundraising Platform ===
-Contributors: givewp, dlocc, webdevmattcrom, ravinderk, mehul0810, kevinwhoffman, jason_the_adams, henryholtgeerts, kbjohnson90, alaca, benmeredithgmailcom, jonwaldstein, joshuadinh, glaubersilvawp, pauloiankoski
+Contributors: givewp, dlocc, webdevmattcrom, ravinderk, mehul0810, kevinwhoffman, jason_the_adams, henryholtgeerts, kbjohnson90, alaca, benmeredithgmailcom, jonwaldstein, joshuadinh, glaubersilvawp, pauloiankoski, filipecouto, waynerocha
 Donate link: https://go.givewp.com/home
 Tags: donation, donate, recurring donations, fundraising, crowdfunding
 Requires at least: 6.6
-Tested up to: 7.0.2
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 4.16.6.1
+Stable tag: 4.16.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -273,6 +273,29 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 10. Use almost any payment gateway integration with GiveWP through our add-ons or by creating your own add-on.
 
 == Changelog ==
+= 4.16.8: September 2nd, 2026 =
+* Fix: Fixed a campaign's default donation form appearing unpublished in the form builder.
+* Fix: Fixed PHP warnings on the form builder screen when its page is opened without the locale or donation form ID query arguments.
+* Fix: Resolved a plugin conflict that prevented donor first and last names from being recorded when the Charitable plugin was active alongside GiveWP.
+* Fix: Resolved an issue where the custom amount minimum and maximum also applied to the donation levels and the set donation amount, so a level below the minimum could not be donated. Forms that leave the minimum empty now fall back to the lowest configured amount, and a minimum or maximum with cents is no longer rounded down.
+* Security: Removed vulnerable dead code related to legacy donor relinking. (CVE-2026-82676)
+* Security: Enhanced security on donor account access. (CVE-2026-82675)
+* Tweak: Replaced the axios HTTP client with WordPress core's apiFetch in the donor dashboard, reports, onboarding wizard, and the log and migration list tables, and removed axios from the plugin's JavaScript dependencies.
+
+= 4.16.7.2: August 27th, 2026 =
+* Security: Added additional hardening for serialized data handling in the donation flow.
+
+= 4.16.7.1: August 24th, 2026 =
+* Security: Added additional validation to PayPal Donations order requests.
+
+= 4.16.7: August 20th, 2026 =
+* Security: Hardened donor-account email access authentication.
+* Security: Improved validation of the checkout login form.
+* Fix: Resolved an issue where paused or failing Stripe Payment Element subscriptions remained stuck when the donor updated their payment method or the subscription was resumed in Stripe.
+* Fix: Resolved a conflict where scripts enqueued by other plugins while a donation form was being rendered could stop the form builder design preview and embedded forms from loading.
+* Fix: Resolved an issue where editing a page could exhaust the PHP call stack when a theme or plugin filtered post metadata.
+* Fix: Activation banner for addons doesn't show when addons are activated from the Unified License Manager
+
 = 4.16.6.1: August 12th, 2026 =
 * Security: Added additional validation to PayPal Standard IPN.
 

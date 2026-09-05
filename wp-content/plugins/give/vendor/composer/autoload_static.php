@@ -7,8 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInitb75550006f5bc80dbe46d39f13664bf0
 {
     public static $files = array (
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '5f6326688f4debc6e43d6860fdea3df8' => __DIR__ . '/../..' . '/src/Framework/Http/Response/functions.php',
         'd07363a44b39ed7758400be44c013440' => __DIR__ . '/../..' . '/src/FormMigration/functions.php',
     );
@@ -16,8 +14,6 @@ class ComposerStaticInitb75550006f5bc80dbe46d39f13664bf0
     public static $prefixLengthsPsr4 = array (
         'S' =>
         array (
-            'Symfony\\Polyfill\\Mbstring\\' => 26,
-            'Symfony\\Polyfill\\Ctype\\' => 23,
             'Stripe\\' => 7,
             'Sample\\' => 7,
         ),
@@ -42,14 +38,6 @@ class ComposerStaticInitb75550006f5bc80dbe46d39f13664bf0
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Polyfill\\Mbstring\\' =>
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
-        ),
-        'Symfony\\Polyfill\\Ctype\\' =>
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
-        ),
         'Stripe\\' =>
         array (
             0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
@@ -354,10 +342,12 @@ class ComposerStaticInitb75550006f5bc80dbe46d39f13664bf0
         'Give\\DonationForms\\Actions\\GenerateDonationFormValidationRouteUrl' => __DIR__ . '/../..' . '/src/DonationForms/Actions/GenerateDonationFormValidationRouteUrl.php',
         'Give\\DonationForms\\Actions\\GenerateDonationFormViewRouteUrl' => __DIR__ . '/../..' . '/src/DonationForms/Actions/GenerateDonationFormViewRouteUrl.php',
         'Give\\DonationForms\\Actions\\GetOrCreateDonor' => __DIR__ . '/../..' . '/src/DonationForms/Actions/GetOrCreateDonor.php',
+        'Give\\DonationForms\\Actions\\IsolateEnqueuedFormViewAssets' => __DIR__ . '/../..' . '/src/DonationForms/Actions/IsolateEnqueuedFormViewAssets.php',
         'Give\\DonationForms\\Actions\\PrintFormMetaTags' => __DIR__ . '/../..' . '/src/DonationForms/Actions/PrintFormMetaTags.php',
         'Give\\DonationForms\\Actions\\ReplaceGiveReceiptShortcodeViewWithDonationConfirmationIframe' => __DIR__ . '/../..' . '/src/DonationForms/Actions/ReplaceGiveReceiptShortcodeViewWithDonationConfirmationIframe.php',
         'Give\\DonationForms\\Actions\\SanitizeDonationFormPreviewRequest' => __DIR__ . '/../..' . '/src/DonationForms/Actions/SanitizeDonationFormPreviewRequest.php',
         'Give\\DonationForms\\Actions\\StoreBackwardsCompatibleFormMeta' => __DIR__ . '/../..' . '/src/DonationForms/Actions/StoreBackwardsCompatibleFormMeta.php',
+        'Give\\DonationForms\\Actions\\ValidateDonationFormRequest' => __DIR__ . '/../..' . '/src/DonationForms/Actions/ValidateDonationFormRequest.php',
         'Give\\DonationForms\\Actions\\ValidateReceiptViewPermission' => __DIR__ . '/../..' . '/src/DonationForms/Actions/ValidateReceiptViewPermission.php',
         'Give\\DonationForms\\AsyncData\\Actions\\GetAsyncFormDataForListView' => __DIR__ . '/../..' . '/src/DonationForms/AsyncData/Actions/GetAsyncFormDataForListView.php',
         'Give\\DonationForms\\AsyncData\\Actions\\GiveGoalProgressStats' => __DIR__ . '/../..' . '/src/DonationForms/AsyncData/Actions/GiveGoalProgressStats.php',
@@ -421,6 +411,7 @@ class ComposerStaticInitb75550006f5bc80dbe46d39f13664bf0
         'Give\\DonationForms\\Rules\\BillingAddressCityRule' => __DIR__ . '/../..' . '/src/DonationForms/Rules/BillingAddressCityRule.php',
         'Give\\DonationForms\\Rules\\BillingAddressStateRule' => __DIR__ . '/../..' . '/src/DonationForms/Rules/BillingAddressStateRule.php',
         'Give\\DonationForms\\Rules\\BillingAddressZipRule' => __DIR__ . '/../..' . '/src/DonationForms/Rules/BillingAddressZipRule.php',
+        'Give\\DonationForms\\Rules\\Concerns\\HasExemptAmounts' => __DIR__ . '/../..' . '/src/DonationForms/Rules/Concerns/HasExemptAmounts.php',
         'Give\\DonationForms\\Rules\\CurrencyRule' => __DIR__ . '/../..' . '/src/DonationForms/Rules/CurrencyRule.php',
         'Give\\DonationForms\\Rules\\DonationTypeRule' => __DIR__ . '/../..' . '/src/DonationForms/Rules/DonationTypeRule.php',
         'Give\\DonationForms\\Rules\\GatewayRule' => __DIR__ . '/../..' . '/src/DonationForms/Rules/GatewayRule.php',
@@ -524,6 +515,7 @@ class ComposerStaticInitb75550006f5bc80dbe46d39f13664bf0
         'Give\\Donations\\Migrations\\AddMissingDonorIdToDonationComments' => __DIR__ . '/../..' . '/src/Donations/Migrations/AddMissingDonorIdToDonationComments.php',
         'Give\\Donations\\Migrations\\MoveDonationCommentToDonationMetaTable' => __DIR__ . '/../..' . '/src/Donations/Migrations/MoveDonationCommentToDonationMetaTable.php',
         'Give\\Donations\\Migrations\\RecalculateExchangeRate' => __DIR__ . '/../..' . '/src/Donations/Migrations/RecalculateExchangeRate.php',
+        'Give\\Donations\\Migrations\\SanitizeSerializedObjectPayloads' => __DIR__ . '/../..' . '/src/Donations/Migrations/SanitizeSerializedObjectPayloads.php',
         'Give\\Donations\\Migrations\\SetAutomaticFormattingOption' => __DIR__ . '/../..' . '/src/Donations/Migrations/SetAutomaticFormattingOption.php',
         'Give\\Donations\\Migrations\\UnserializeTitlePrefix' => __DIR__ . '/../..' . '/src/Donations/Migrations/UnserializeTitlePrefix.php',
         'Give\\Donations\\Models\\Donation' => __DIR__ . '/../..' . '/src/Donations/Models/Donation.php',
@@ -1223,6 +1215,7 @@ class ComposerStaticInitb75550006f5bc80dbe46d39f13664bf0
         'Give\\PaymentGateways\\Gateways\\PayPalStandard\\Webhooks\\WebhookRegister' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/PayPalStandard/Webhooks/WebhookRegister.php',
         'Give\\PaymentGateways\\Gateways\\PayPalStandard\\Webhooks\\WebhookValidator' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/PayPalStandard/Webhooks/WebhookValidator.php',
         'Give\\PaymentGateways\\Gateways\\ServiceProvider' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/ServiceProvider.php',
+        'Give\\PaymentGateways\\Gateways\\Stripe\\Actions\\AddExtraMetadataToPaymentIntent' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/Stripe/Actions/AddExtraMetadataToPaymentIntent.php',
         'Give\\PaymentGateways\\Gateways\\Stripe\\Actions\\CreateCheckoutSession' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/Stripe/Actions/CreateCheckoutSession.php',
         'Give\\PaymentGateways\\Gateways\\Stripe\\Actions\\CreatePaymentIntent' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/Stripe/Actions/CreatePaymentIntent.php',
         'Give\\PaymentGateways\\Gateways\\Stripe\\Actions\\GetOrCreateStripeCustomer' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/Stripe/Actions/GetOrCreateStripeCustomer.php',
@@ -1257,6 +1250,8 @@ class ComposerStaticInitb75550006f5bc80dbe46d39f13664bf0
         'Give\\PaymentGateways\\Gateways\\Stripe\\StripePaymentElementGateway\\Webhooks\\Listeners\\ChargeRefunded' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/ChargeRefunded.php',
         'Give\\PaymentGateways\\Gateways\\Stripe\\StripePaymentElementGateway\\Webhooks\\Listeners\\CustomerSubscriptionCreated' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/CustomerSubscriptionCreated.php',
         'Give\\PaymentGateways\\Gateways\\Stripe\\StripePaymentElementGateway\\Webhooks\\Listeners\\CustomerSubscriptionDeleted' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/CustomerSubscriptionDeleted.php',
+        'Give\\PaymentGateways\\Gateways\\Stripe\\StripePaymentElementGateway\\Webhooks\\Listeners\\CustomerSubscriptionResumed' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/CustomerSubscriptionResumed.php',
+        'Give\\PaymentGateways\\Gateways\\Stripe\\StripePaymentElementGateway\\Webhooks\\Listeners\\CustomerSubscriptionUpdated' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/CustomerSubscriptionUpdated.php',
         'Give\\PaymentGateways\\Gateways\\Stripe\\StripePaymentElementGateway\\Webhooks\\Listeners\\InvoicePaymentFailed' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/InvoicePaymentFailed.php',
         'Give\\PaymentGateways\\Gateways\\Stripe\\StripePaymentElementGateway\\Webhooks\\Listeners\\InvoicePaymentSucceeded' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/InvoicePaymentSucceeded.php',
         'Give\\PaymentGateways\\Gateways\\Stripe\\StripePaymentElementGateway\\Webhooks\\Listeners\\PaymentIntentPaymentFailed' => __DIR__ . '/../..' . '/src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/PaymentIntentPaymentFailed.php',
@@ -1590,6 +1585,7 @@ class ComposerStaticInitb75550006f5bc80dbe46d39f13664bf0
         'Give\\ValueObjects\\ValueObjects' => __DIR__ . '/../..' . '/src/ValueObjects/ValueObjects.php',
         'Give\\VendorOverrides\\AdminNotices\\AdminNoticesServiceProvider' => __DIR__ . '/../..' . '/src/VendorOverrides/AdminNotices/AdminNoticesServiceProvider.php',
         'Give\\VendorOverrides\\FieldConditions\\FieldConditionsServiceProvider' => __DIR__ . '/../..' . '/src/VendorOverrides/FieldConditions/FieldConditionsServiceProvider.php',
+        'Give\\VendorOverrides\\Harbor\\Actions\\HarborHasLoaded' => __DIR__ . '/../..' . '/src/VendorOverrides/Harbor/Actions/HarborHasLoaded.php',
         'Give\\VendorOverrides\\Harbor\\Actions\\HasActivePremiumAddons' => __DIR__ . '/../..' . '/src/VendorOverrides/Harbor/Actions/HasActivePremiumAddons.php',
         'Give\\VendorOverrides\\Harbor\\Actions\\ReportLegacyLicences' => __DIR__ . '/../..' . '/src/VendorOverrides/Harbor/Actions/ReportLegacyLicences.php',
         'Give\\VendorOverrides\\Harbor\\HarborServiceProvider' => __DIR__ . '/../..' . '/src/VendorOverrides/Harbor/HarborServiceProvider.php',
@@ -1946,8 +1942,6 @@ class ComposerStaticInitb75550006f5bc80dbe46d39f13664bf0
         'Stripe\\Webhook' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Webhook.php',
         'Stripe\\WebhookEndpoint' => __DIR__ . '/..' . '/stripe/stripe-php/lib/WebhookEndpoint.php',
         'Stripe\\WebhookSignature' => __DIR__ . '/..' . '/stripe/stripe-php/lib/WebhookSignature.php',
-        'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
-        'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'TCPDF' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf.php',
         'TCPDF2DBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_2d.php',
         'TCPDFBarcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/tcpdf_barcodes_1d.php',
