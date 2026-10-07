@@ -39,6 +39,14 @@ trait Helper
      * @since  4.0.2
      */
     public function typeform_auth_handle() {
+	    // admin_init also fires on admin-ajax.php, where it runs for logged-out
+	    // visitors and skips the menu page's capability check. The OAuth provider
+	    // only ever redirects back to admin.php, so refuse AJAX requests outright,
+	    // and require the capability that manages the plugin's settings.
+	    if ( wp_doing_ajax() || ! current_user_can( 'manage_options' ) ) {
+		    return;
+	    }
+
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	    if ( !empty($_GET[ 'page' ]) && 'eael-settings' === sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -159,7 +167,7 @@ trait Helper
 	    $max_page = empty( $args['max_page'] ) ? false : $args['max_page'];
 	    unset( $args['max_page'] );
 
-        if ( isset( $args['found_posts'] ) && $args['found_posts'] <= $args['posts_per_page'] ){
+        if ( isset( $args['found_posts'], $args['posts_per_page'] ) && $args['found_posts'] <= $args['posts_per_page'] ){
 	        $this->add_render_attribute( 'load-more', [ 'class' => 'hide-load-more' ] );
 	        unset( $args['found_posts'] );
         }
@@ -505,10 +513,30 @@ trait Helper
 		    return $id;
 	    }
 
+	    // Never remap a document that is being edited rather than displayed — the
+	    // editor save, its render round-trips, the editor page and its preview. See
+	    // eael_is_elementor_editor_context() for why.
+	    if ( self::eael_is_elementor_editor_context( $id ) ) {
+		    return $id;
+	    }
+
 	    // Never remap while Elementor Pro is fetching the document for its own
 	    // theme-builder bookkeeping rather than to render it. See
 	    // eael_is_theme_builder_conditions_context() for why this is required.
 	    if ( $this->eael_is_theme_builder_conditions_context() ) {
+		    return $id;
+	    }
+
+   		// Never remap while Elementor Pro is reading or rebuilding its theme-builder
+	    // display conditions. Conditions_Cache::regenerate() looks a document up by id
+	    // purely to read its _elementor_conditions meta; handing it a translation
+	    // returns a document that carries no conditions of its own, so get_meta()
+	    // yields '' and Conditions_Cache::add() throws "Argument #2 ($conditions) must
+	    // be of type array, string given" — which surfaces as a critical error and
+	    // aborts every condition save on the site. The same remap in the save path
+	    // would otherwise write the condition onto the translation instead of the
+	    // template the user actually opened.
+	    if ( self::eael_is_conditions_cache_context() ) {
 		    return $id;
 	    }
 
@@ -550,6 +578,91 @@ trait Helper
     }
 
 	/**
+	 * Is this document lookup part of editing it rather than displaying it?
+	 *
+	 * Elementor resolves a document through `elementor/documents/get/post_id`
+	 * before it writes: `Documents_Manager::ajax_save()` looks up the id the
+	 * editor sent and saves into whatever comes back. The same lookup opens the
+	 * editor and renders the edited document in its preview. Remapping there does
+	 * not translate anything for a visitor — it swaps the document being edited,
+	 * so Publish writes the elements and title into the translation and leaves
+	 * the template the user opened untouched (#910). The language behind that
+	 * remap is not the editor's either: on admin-ajax.php Polylang reads it from
+	 * a cookie shared by every tab.
+	 *
+	 * Deny-list, like the conditions guards below, so every display context EA
+	 * already translates in (front-end pages, AJAX-loaded content) keeps working.
+	 *
+	 * @since 6.8.4
+	 *
+	 * @param int $id Document id being resolved.
+	 *
+	 * @return bool
+	 */
+	public static function eael_is_elementor_editor_context( $id ) {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only request routing checks; nothing is processed or stored.
+		$action = isset( $_REQUEST['action'] ) ? sanitize_key( wp_unslash( $_REQUEST['action'] ) ) : '';
+
+		// Editor round-trips: save, autosave, discard, document config, widget renders.
+		if ( wp_doing_ajax() && 'elementor_ajax' === $action ) {
+			return true;
+		}
+
+		// The editor page itself (post.php?action=elementor).
+		if ( is_admin() && 'elementor' === $action ) {
+			return true;
+		}
+
+		// The preview frame rendering the document being edited. Templates embedded
+		// in it are other ids and still resolve to the current language.
+		if ( isset( $_GET['elementor-preview'] ) && absint( $_GET['elementor-preview'] ) === absint( $id ) ) {
+			return true;
+		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
+
+		// Elementor's own REST routes, which load a document in order to change it.
+		if ( defined( 'REST_REQUEST' ) && REST_REQUEST && isset( $GLOBALS['wp'] ) && ! empty( $GLOBALS['wp']->query_vars['rest_route'] ) ) {
+			if ( 0 === strpos( ltrim( (string) $GLOBALS['wp']->query_vars['rest_route'], '/' ), 'elementor/' ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Is the current call coming from Elementor Pro's theme-builder display conditions?
+	 *
+	 * Mirrors the calling-context gate WPML applies in
+	 * WPML_Elementor_Translate_IDs::should_translate_template(), but as a narrow
+	 * deny-list so every rendering context EA already translates in keeps working.
+	 *
+	 * @since 6.7.2
+	 *
+	 * @return bool
+	 */
+	public static function eael_is_conditions_cache_context() {
+		$deny = [
+			'elementorpro\modules\themebuilder\classes\conditions_cache::regenerate',
+			'elementorpro\modules\themebuilder\classes\conditions_manager::save_conditions',
+		];
+
+		$trace = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 20 ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace
+
+		foreach ( $trace as $frame ) {
+			if ( empty( $frame['function'] ) || empty( $frame['class'] ) ) {
+				continue;
+			}
+
+			if ( in_array( strtolower( $frame['class'] . '::' . $frame['function'] ), $deny, true ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Is this filter running inside Elementor Pro's theme-builder conditions
 	 * machinery rather than a render?
 	 *
@@ -586,7 +699,7 @@ trait Helper
 			}
 		}
 
-		$frames = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 20 ); // phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue.NeedsInspection
+		$frames = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 20 ); // phpcs:ignore PHPCompatibility.FunctionUse.ArgumentFunctionsReportCurrentValue.NeedsInspection, WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace -- Detects an Elementor Pro Theme Builder conditions call, which exposes no public signal.
 
 		foreach ( $frames as $frame ) {
 			if ( ! empty( $frame['class'] ) && false !== stripos( $frame['class'], 'ThemeBuilder\\Classes\\Conditions' ) ) {

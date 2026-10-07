@@ -2315,7 +2315,7 @@ class GravityForms extends Widget_Base {
                 'selectors'             => [
                     'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button' => 'width: {{SIZE}}{{UNIT}} !important',
                     'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button' => 'width: {{SIZE}}{{UNIT}} !important;',
-                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button' => 'width: {{SIZE}}{{UNIT}} !important;'
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:not(.gform-datepicker-toggle)' => 'width: {{SIZE}}{{UNIT}} !important;'
                 ],
                 'condition'             => [
                     'button_width_type' => 'custom',
@@ -2341,7 +2341,7 @@ class GravityForms extends Widget_Base {
                 'selectors'             => [
                     'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button' => 'background-color: {{VALUE}} !important;',
                     'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button' => 'background-color: {{VALUE}} !important;',
-                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button' => 'background-color: {{VALUE}} !important;',
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:not(.gform-datepicker-toggle)' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -2355,7 +2355,7 @@ class GravityForms extends Widget_Base {
                 'selectors'             => [
                     'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button' => 'color: {{VALUE}} !important;',
                     'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button' => 'color: {{VALUE}} !important;',
-                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button' => 'color: {{VALUE}} !important;',
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:not(.gform-datepicker-toggle)' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -2367,7 +2367,7 @@ class GravityForms extends Widget_Base {
 				'label'                 => __( 'Border', 'essential-addons-for-elementor-lite'),
 				'placeholder'           => '1px',
 				'default'               => '1px',
-				'selector'              => 'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button, html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button, html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button',
+				'selector'              => 'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button, html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button, html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:not(.gform-datepicker-toggle)',
 			]
 		);
 
@@ -2380,7 +2380,7 @@ class GravityForms extends Widget_Base {
 				'selectors'             => [
 					'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;;',
                     'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;;',
-                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;;',
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:not(.gform-datepicker-toggle)' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;;',
                 ],
 			]
 		);
@@ -2403,7 +2403,7 @@ class GravityForms extends Widget_Base {
                 'selectors'             => [
                     'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button:hover' => 'background-color: {{VALUE}} !important;',
                     'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button:hover' => 'background-color: {{VALUE}} !important;',
-                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:hover' => 'background-color: {{VALUE}} !important;'
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:not(.gform-datepicker-toggle):hover' => 'background-color: {{VALUE}} !important;'
                 ],
             ]
         );
@@ -2417,7 +2417,7 @@ class GravityForms extends Widget_Base {
                 'selectors'             => [
                     'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button:hover' => 'color: {{VALUE}} !important;',
                     'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button:hover' => 'color: {{VALUE}} !important;',
-                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:hover' => 'color: {{VALUE}} !important;'
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:not(.gform-datepicker-toggle):hover' => 'color: {{VALUE}} !important;'
                 ],
             ]
         );
@@ -2431,7 +2431,7 @@ class GravityForms extends Widget_Base {
                 'selectors'             => [
                     'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button:hover' => 'border-color: {{VALUE}}',
                     'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button:hover' => 'border-color: {{VALUE}}',
-                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:hover' => 'border-color: {{VALUE}}'
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:not(.gform-datepicker-toggle):hover' => 'border-color: {{VALUE}}'
                 ],
             ]
         );
@@ -2449,7 +2449,7 @@ class GravityForms extends Widget_Base {
                 'selectors'             => [
                     'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:not(.gform-datepicker-toggle)' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                 ],
                 'separator' => 'before'
             ]
@@ -2471,7 +2471,7 @@ class GravityForms extends Widget_Base {
                 'selectors'             => [
                     'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button' => 'margin-top: {{SIZE}}{{UNIT}}',
                     'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button' => 'margin-top: {{SIZE}}{{UNIT}}',
-                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button' => 'margin-top: {{SIZE}}{{UNIT}}'
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:not(.gform-datepicker-toggle)' => 'margin-top: {{SIZE}}{{UNIT}}'
                 ],
             ]
         );
@@ -2484,7 +2484,7 @@ class GravityForms extends Widget_Base {
                 'global' => [
 	                'default' => Global_Typography::TYPOGRAPHY_ACCENT
                 ],
-                'selector'              => 'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button, html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button, html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button',
+                'selector'              => 'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button, html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button, html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:not(.gform-datepicker-toggle)',
 				'separator'             => 'before',
             ]
         );
@@ -2493,7 +2493,7 @@ class GravityForms extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'                  => 'button_box_shadow',
-				'selector'              => 'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button, html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button, html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button',
+				'selector'              => 'html body {{WRAPPER}} .eael-gravity-form .gform_footer .gform_button, html body {{WRAPPER}} .eael-gravity-form .gform_body .gform_page_footer .gform_button, html body {{WRAPPER}} .eael-gravity-form .gform_body .gform-button:not(.gform-datepicker-toggle)',
 				'separator'             => 'before',
 			]
 		);
@@ -2722,6 +2722,229 @@ class GravityForms extends Widget_Base {
 		);
 
         $this->end_controls_section();
+
+        /**
+         * Style Tab: Save & Continue Button
+         * -------------------------------------------------
+         *
+         * Gravity Forms renders this button as `.gform_save_link`, which none of the
+         * button sections above target, so it kept GF's own white/grey styling with no
+         * hover state while Submit and Next/Previous were fully stylable. The icon is an
+         * inline SVG with a hard-coded fill, so Text Color drives `svg path` too.
+         */
+        $this->start_controls_section(
+            'eael_gravity_forms_section_save_continue_button_style',
+            [
+                'label'                 => __( 'Save & Continue Button', 'essential-addons-for-elementor-lite'),
+                'tab'                   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->start_controls_tabs( 'eael_gravity_forms_save_continue_button_tabs' );
+
+        $this->start_controls_tab(
+            'eael_gravity_forms_save_continue_button_normal',
+            [
+                'label'                 => __( 'Normal', 'essential-addons-for-elementor-lite'),
+            ]
+        );
+
+        $this->add_control(
+            'eael_gravity_forms_save_continue_button_bg_color',
+            [
+                'label'                 => __( 'Background Color', 'essential-addons-for-elementor-lite'),
+                'type'                  => Controls_Manager::COLOR,
+                'selectors'             => [
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_save_link' => 'background-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'eael_gravity_forms_save_continue_button_text_color',
+            [
+                'label'                 => __( 'Text Color', 'essential-addons-for-elementor-lite'),
+                'type'                  => Controls_Manager::COLOR,
+                'selectors'             => [
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_save_link' => 'color: {{VALUE}} !important;',
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_save_link svg path' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'                  => 'eael_gravity_forms_save_continue_button_border',
+                'label'                 => __( 'Border', 'essential-addons-for-elementor-lite'),
+                'selector'              => 'html body {{WRAPPER}} .eael-gravity-form .gform_save_link',
+            ]
+        );
+
+        $this->add_control(
+            'eael_gravity_forms_save_continue_button_border_radius',
+            [
+                'label'                 => __( 'Border Radius', 'essential-addons-for-elementor-lite'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => [ 'px', 'em', '%' ],
+                'selectors'             => [
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_save_link' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'eael_gravity_forms_save_continue_button_hover',
+            [
+                'label'                 => __( 'Hover', 'essential-addons-for-elementor-lite'),
+            ]
+        );
+
+        $this->add_control(
+            'eael_gravity_forms_save_continue_button_bg_color_hover',
+            [
+                'label'                 => __( 'Background Color', 'essential-addons-for-elementor-lite'),
+                'type'                  => Controls_Manager::COLOR,
+                'selectors'             => [
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_save_link:hover' => 'background-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'eael_gravity_forms_save_continue_button_text_color_hover',
+            [
+                'label'                 => __( 'Text Color', 'essential-addons-for-elementor-lite'),
+                'type'                  => Controls_Manager::COLOR,
+                'selectors'             => [
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_save_link:hover' => 'color: {{VALUE}} !important;',
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_save_link:hover svg path' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'eael_gravity_forms_save_continue_button_border_color_hover',
+            [
+                'label'                 => __( 'Border Color', 'essential-addons-for-elementor-lite'),
+                'type'                  => Controls_Manager::COLOR,
+                'selectors'             => [
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_save_link:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->add_responsive_control(
+            'eael_gravity_forms_save_continue_button_padding',
+            [
+                'label'                 => __( 'Padding', 'essential-addons-for-elementor-lite'),
+                'type'                  => Controls_Manager::DIMENSIONS,
+                'size_units'            => [ 'px', 'em', '%' ],
+                'selectors'             => [
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_save_link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'separator'             => 'before',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'eael_gravity_forms_save_continue_button_margin',
+            [
+                'label'                 => __( 'Margin Top', 'essential-addons-for-elementor-lite'),
+                'type'                  => Controls_Manager::SLIDER,
+                'range'                 => [
+                    'px'        => [
+                        'min'   => 0,
+                        'max'   => 100,
+                        'step'  => 1,
+                    ],
+                ],
+                'size_units'            => [ 'px', 'em', '%' ],
+                'selectors'             => [
+                    'html body {{WRAPPER}} .eael-gravity-form .gform_save_link' => 'margin-top: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'                  => 'eael_gravity_forms_save_continue_button_typography',
+                'label'                 => __( 'Typography', 'essential-addons-for-elementor-lite'),
+                'selector'              => 'html body {{WRAPPER}} .eael-gravity-form .gform_save_link',
+                'separator'             => 'before',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'                  => 'eael_gravity_forms_save_continue_button_box_shadow',
+                'selector'              => 'html body {{WRAPPER}} .eael-gravity-form .gform_save_link',
+                'separator'             => 'before',
+            ]
+        );
+
+        $this->end_controls_section();
+
+
+        /**
+         * Style Tab: Date Picker Icon
+         * -------------------------------------------------
+         *
+         * Since Gravity Forms 3.0 the calendar icon is a real button carrying
+         * `gform-button`. It is excluded from the Submit Button selectors above so it
+         * keeps GF's icon styling, and gets its own colour controls here. GF sets the
+         * colour on the icon's ::before, so both the button and the pseudo-element are
+         * targeted.
+         */
+        $this->start_controls_section(
+            'eael_gravity_forms_section_datepicker_icon_style',
+            [
+                'label'                 => __( 'Date Picker Icon', 'essential-addons-for-elementor-lite'),
+                'tab'                   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'eael_gravity_forms_datepicker_icon_color',
+            [
+                'label'                 => __( 'Color', 'essential-addons-for-elementor-lite'),
+                'type'                  => Controls_Manager::COLOR,
+                'selectors'             => [
+                    'html body {{WRAPPER}} .eael-gravity-form .gform-datepicker-toggle' => 'color: {{VALUE}};',
+                    // GF's framework theme colours the icon span itself, through a
+                    // six-class `.dashicons` rule, while the older gravity-theme colours
+                    // the glyph on its ::before. Both are matched from the toggle so the
+                    // selectors outrank GF's own.
+                    'html body {{WRAPPER}} .eael-gravity-form .gform-datepicker-toggle .gform-datepicker-toggle-icon' => 'color: {{VALUE}};',
+                    'html body {{WRAPPER}} .eael-gravity-form .gform-datepicker-toggle .gform-calendar-icon::before' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'eael_gravity_forms_datepicker_icon_color_hover',
+            [
+                'label'                 => __( 'Hover Color', 'essential-addons-for-elementor-lite'),
+                'type'                  => Controls_Manager::COLOR,
+                'selectors'             => [
+                    'html body {{WRAPPER}} .eael-gravity-form .gform-datepicker-toggle:hover' => 'color: {{VALUE}};',
+                    'html body {{WRAPPER}} .eael-gravity-form .gform-datepicker-toggle:hover .gform-datepicker-toggle-icon' => 'color: {{VALUE}};',
+                    'html body {{WRAPPER}} .eael-gravity-form .gform-datepicker-toggle:hover .gform-calendar-icon::before' => 'color: {{VALUE}};',
+                    'html body {{WRAPPER}} .eael-gravity-form .ginput_container_date:focus-within .gform-datepicker-toggle .gform-datepicker-toggle-icon' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
 
         
         /**
@@ -2984,7 +3207,111 @@ class GravityForms extends Widget_Base {
 		        $eael_form_title       = $settings['form_title'] === 'yes';
 		        $eael_form_description = $settings['form_description'] === 'yes';
 		        $eael_form_ajax        = $settings['form_ajax'] === 'yes';
+		        ?>
 
+            <script type="text/javascript">
+                /* EA Gravity Forms - fallback dispatch of GF's per-form post-render event.
+                 *
+                 * GF normally dispatches this itself from GFFormDisplay::footer_init_scripts().
+                 * In render contexts where that never runs, GF add-ons that bind to
+                 * `gform/post_render` - e.g. the reCAPTCHA Add-On v2.2.2+, which registers its
+                 * v3 token submission filter there - are never initialised.
+                 *
+                 * Dispatching unconditionally is not safe. GF's multi-file uploader calls
+                 * `new plupload.Uploader()` on every post_render with no idempotency guard
+                 * (gravityforms/js/gravityforms.js), so a second dispatch binds a second
+                 * uploader to the same field and every selected file is submitted twice. GF's
+                 * own guard is function-local to the script it prints and cannot be read from
+                 * here, so we watch for the event instead and only step in if it never comes.
+                 *
+                 * This is the single fallback for this widget. Tickets 84410 and 84529 each
+                 * added one independently and both were merged, leaving two mutually-blind
+                 * shims that raced (issue #894). Do not add another - extend this one, and
+                 * keep the `window.__eaelGfPostRender*` flags as the shared source of truth.
+                 *
+                 * Printed before the form markup so the listeners are in place ahead of any
+                 * GF init script for this form, whether printed inline or in the footer.
+                 */
+                ( function () {
+                    var formId    = <?php echo (int) $eael_form_id; ?>;
+                    var seenFlag  = '__eaelGfPostRenderSeen_'  + formId; // dispatched, by anyone
+                    var boundFlag = '__eaelGfPostRenderBound_' + formId; // this shim is installed
+
+                    if ( window[ boundFlag ] ) {
+                        return;
+                    }
+                    window[ boundFlag ] = true;
+
+                    function markSeen( id ) {
+                        if ( parseInt( id, 10 ) === formId ) {
+                            window[ seenFlag ] = true;
+                        }
+                    }
+
+                    // triggerPostRenderEvents() always fires the jQuery event first and the
+                    // gform.utils one after, whoever calls it - so between them these observe
+                    // GF core's own dispatch as well as any other caller's.
+                    if ( window.jQuery ) {
+                        window.jQuery( document ).on( 'gform_post_render', function ( event, id ) {
+                            markSeen( typeof id !== 'undefined' ? id : formId );
+                        } );
+                    }
+                    if ( window.gform && window.gform.utils
+                         && typeof window.gform.utils.addEventListener === 'function' ) {
+                        window.gform.utils.addEventListener( 'gform/post_render', function ( e ) {
+                            markSeen( e && e.detail && typeof e.detail.formId !== 'undefined'
+                                      ? e.detail.formId : formId );
+                        } );
+                    }
+
+                    function maybeDispatch() {
+                        if ( window[ seenFlag ] ) {
+                            return;
+                        }
+
+                        // GF leaves this marker beside a hidden form while it waits for the
+                        // form to become visible, and removes it once it dispatches. Still
+                        // present means GF's script did run and will dispatch on its own -
+                        // firing now is the double-dispatch that duplicates file uploads.
+                        if ( document.getElementById( 'gform_visibility_test_' + formId ) ) {
+                            return;
+                        }
+
+                        if ( ! window.gform || ! window.gform.core
+                             || typeof window.gform.core.triggerPostRenderEvents !== 'function' ) {
+                            return;
+                        }
+
+                        var pageInput   = document.getElementById( 'gform_source_page_number_' + formId );
+                        var currentPage = pageInput ? parseInt( pageInput.value, 10 ) : 1;
+
+                        window[ seenFlag ] = true;
+                        window.gform.core.triggerPostRenderEvents( formId, currentPage || 1 );
+                    }
+
+                    // Wait for the window load event and then for GF's own gate, which needs
+                    // DOMContentLoaded plus its main and theme script events. Registering the
+                    // callback this late puts it behind GF's in the queue, and the timeout
+                    // puts it in a later task again, so GF always gets to dispatch first.
+                    function schedule() {
+                        if ( window.gform && typeof window.gform.initializeOnLoaded === 'function' ) {
+                            window.gform.initializeOnLoaded( function () {
+                                setTimeout( maybeDispatch, 0 );
+                            } );
+                        } else {
+                            setTimeout( maybeDispatch, 0 );
+                        }
+                    }
+
+                    if ( document.readyState === 'complete' ) {
+                        schedule();
+                    } else {
+                        window.addEventListener( 'load', schedule );
+                    }
+                } )();
+            </script>
+
+            <?php
 		        gravity_form( $eael_form_id, $eael_form_title, $eael_form_description, $display_inactive = false, $field_values = null, $eael_form_ajax, '', $echo = true );
 		        ?>
 			</div>
@@ -2994,31 +3321,6 @@ class GravityForms extends Widget_Base {
 				<?php GFCommon::gf_vars() ?>
 			</script>
 
-            <script type="text/javascript">
-                /* EA Gravity Forms - ensure GF's per-form post-render event dispatches
-                 * even when the widget's render context prevents GF's standard
-                 * GFFormDisplay::footer_init_scripts() per-form trigger from executing.
-                 * Without this, third-party GF add-ons (e.g. Gravity Forms reCAPTCHA
-                 * Add-On v2.2.2+) that hook into `gform/post_render` to register
-                 * submission filters will never fire, breaking v3 token population.
-                 */
-                ( function () {
-                    var formId = <?php echo (int) $eael_form_id; ?>;
-                    if ( typeof window.gform === 'undefined'
-                         || typeof window.gform.initializeOnLoaded !== 'function' ) {
-                        return;
-                    }
-                    window.gform.initializeOnLoaded( function () {
-                        var flag = '__eaelGfPostRenderFired_' + formId;
-                        if ( window[ flag ] ) { return; }
-                        if ( window.gform && window.gform.core
-                             && typeof window.gform.core.triggerPostRenderEvents === 'function' ) {
-                            window[ flag ] = true;
-                            window.gform.core.triggerPostRenderEvents( formId, 1 );
-                        }
-                    } );
-                } )();
-            </script>
             <?php
         }
     }

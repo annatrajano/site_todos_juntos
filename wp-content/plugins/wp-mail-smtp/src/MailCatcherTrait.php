@@ -98,6 +98,7 @@ trait MailCatcherTrait {
 	 * @since 1.0.0
 	 * @since 1.4.0 Process "Do Not Send" option, but always allow test email.
 	 * @since 4.5.0 Add support for logging blocked emails.
+	 * @since 4.10.0 Allow the Setup Wizard test email when sending is blocked.
 	 *
 	 * @throws Exception When sending via PhpMailer fails for some reason.
 	 *
@@ -128,6 +129,7 @@ trait MailCatcherTrait {
 					$this->is_emailing_blocked = false;
 					$this->is_test_email       = true;
 				} elseif ( trim( $header[1] ) === 'WPMailSMTP/Admin/SetupWizard/Test' ) {
+					$this->is_emailing_blocked        = false;
 					$this->is_setup_wizard_test_email = true;
 				}
 			}
@@ -871,10 +873,10 @@ trait MailCatcherTrait {
 				$this->clearAttachments();
 
 				foreach ( $state['attachment'] as $attachment ) {
-					[ $path, , $name ] = $attachment;
+					[ $path, , $name, $encoding, $type, , $disposition ] = $attachment;
 
 					try {
-						$this->addAttachment( $path, $name );
+						$this->addAttachment( $path, $name, $encoding, $type, $disposition );
 					} catch ( Exception $e ) {
 						continue;
 					}
