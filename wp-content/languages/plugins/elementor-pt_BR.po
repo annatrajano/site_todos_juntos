@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Elementor Website Builder &#8211; more than just a page builder - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-10-06 00:38:42+0000\n"
+"PO-Revision-Date: 2026-10-11 08:07:05+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4180,7 +4180,7 @@ msgstr "Este controle afetará apenas os elementos contidos."
 
 #: includes/controls/groups/flex-item.php:51
 msgid "Align Self"
-msgstr "Alinhar-se"
+msgstr "Alinhamento próprio"
 
 #: includes/controls/groups/flex-item.php:20
 msgid "Flex Basis"
