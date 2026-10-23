@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Elementor Website Builder &#8211; more than just a page builder - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-10-11 08:07:05+0000\n"
+"PO-Revision-Date: 2026-10-14 00:22:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/4.1.0\n"
 "Language: pt_BR\n"
 "Project-Id-Version: Plugins - Elementor Website Builder &#8211; more than just a page builder - Stable (latest release)\n"
+
+#: modules/mcp/abilities/manage-variable-ability.php:282
+msgid "Size variables require an active Elementor Pro license, so this operation was not applied. Do not retry it — tell the user that size variables are a Pro feature."
+msgstr "As variáveis de tamanho exigem uma licença ativa do Elementor Pro, portanto, esta operação não foi aplicada. Não tente novamente. Informe ao usuário que as variáveis de tamanho são um recurso da versão Pro."
 
 #. translators: %s: XML tag name
 #: modules/mcp/abilities/build-composition/xml-parser.php:47
@@ -42,11 +46,11 @@ msgstr "Carregue o Angie no painel do editor nativo do Elementor, em vez da barr
 msgid "Angie in editor panels"
 msgstr "Angie nos painéis do editor"
 
-#: modules/promotions/conversion-banner.php:220
+#: modules/promotions/conversion-banner.php:237
 msgid "Access Elementor's Theme Builder, Dynamic Content, WooCommerce Builder, Popup Builder, 85+ Pro widgets and more when you upgrade to Pro"
 msgstr "Ao atualizar para a versão Pro, você terá acesso ao “Construtor de temas”, “Conteúdo dinâmico”, “Construtor do WooCommerce”, “Construtor de pop-ups”, mais de 85 widgets Pro e muitos outros recursos do Elementor"
 
-#: modules/promotions/conversion-banner.php:219
+#: modules/promotions/conversion-banner.php:236
 msgid "Elevate your site with Elementor Pro"
 msgstr "Eleve o nível do seu site com o Elementor Pro"
 
@@ -202,23 +206,23 @@ msgstr "Guia detalhado sobre como usar a ferramenta “manage-global-variable”
 msgid "Manage Global Variable Guide"
 msgstr "Guia de gerenciamento de variáveis globais"
 
-#: modules/mcp/abilities/manage-variable-ability.php:231
+#: modules/mcp/abilities/manage-variable-ability.php:240
 msgid "Delete requires id."
 msgstr "A exclusão requer um ID."
 
-#: modules/mcp/abilities/manage-variable-ability.php:215
+#: modules/mcp/abilities/manage-variable-ability.php:220
 msgid "Update requires id, label, and value."
 msgstr "A atualização requer um ID, um rótulo e um valor."
 
-#: modules/mcp/abilities/manage-variable-ability.php:197
+#: modules/mcp/abilities/manage-variable-ability.php:198
 msgid "Create requires type, label, and value."
 msgstr "A criação requer um tipo, um rótulo e um valor."
 
-#: modules/mcp/abilities/manage-variable-ability.php:39
+#: modules/mcp/abilities/manage-variable-ability.php:40
 msgid "Manage V4 global variables (color, font, size, custom-size). Bulk create, update, or delete on the active kit (up to 50 operations)."
 msgstr "Gerencie as variáveis globais da V4 (cor, fonte, tamanho, tamanho personalizado). Crie, atualize ou exclua em massa no kit ativo (até 50 operações)."
 
-#: modules/mcp/abilities/manage-variable-ability.php:38
+#: modules/mcp/abilities/manage-variable-ability.php:39
 msgid "Manage Global Variable"
 msgstr "Gerenciar variáveis globais"
 
@@ -386,14 +390,14 @@ msgstr "A criação requer “label”."
 #: modules/mcp/abilities/manage-classes-ability.php:235
 #: modules/mcp/abilities/manage-default-styles-ability.php:174
 #: modules/mcp/abilities/manage-elements-ability.php:309
-#: modules/mcp/abilities/manage-variable-ability.php:242
+#: modules/mcp/abilities/manage-variable-ability.php:251
 msgid "Unknown action: %s."
 msgstr "Ação desconhecida: %s."
 
 #: modules/mcp/abilities/manage-classes-ability.php:209
 #: modules/mcp/abilities/manage-default-styles-ability.php:141
 #: modules/mcp/abilities/manage-elements-ability.php:216
-#: modules/mcp/abilities/manage-variable-ability.php:138
+#: modules/mcp/abilities/manage-variable-ability.php:139
 msgid "Invalid operation."
 msgstr "Operação inválida."
 
@@ -401,21 +405,21 @@ msgstr "Operação inválida."
 #: modules/mcp/abilities/manage-classes-ability.php:130
 #: modules/mcp/abilities/manage-default-styles-ability.php:116
 #: modules/mcp/abilities/manage-elements-ability.php:172
-#: modules/mcp/abilities/manage-variable-ability.php:110
+#: modules/mcp/abilities/manage-variable-ability.php:111
 msgid "Maximum %d operations per request."
 msgstr "Máximo de %d operações por solicitação."
 
 #: modules/mcp/abilities/manage-classes-ability.php:120
 #: modules/mcp/abilities/manage-default-styles-ability.php:108
 #: modules/mcp/abilities/manage-elements-ability.php:162
-#: modules/mcp/abilities/manage-variable-ability.php:100
+#: modules/mcp/abilities/manage-variable-ability.php:101
 msgid "operations must not be empty."
 msgstr "as operações não podem estar vazias."
 
 #: modules/mcp/abilities/manage-classes-ability.php:114
 #: modules/mcp/abilities/manage-default-styles-ability.php:104
 #: modules/mcp/abilities/manage-elements-ability.php:156
-#: modules/mcp/abilities/manage-variable-ability.php:94
+#: modules/mcp/abilities/manage-variable-ability.php:95
 msgid "operations array is required."
 msgstr "o array “operations” é obrigatório."
 
@@ -838,7 +842,7 @@ msgstr "Mantém os arquivos CSS externos disponíveis e consistentes, para sites
 msgid "Optimized CSS Files"
 msgstr "Arquivos CSS otimizados"
 
-#: core/admin/admin.php:247 modules/gutenberg/module.php:100
+#: core/admin/admin.php:251 modules/gutenberg/module.php:100
 msgid "Edit with WordPress"
 msgstr "Editar com o WordPress"
 
@@ -898,30 +902,9 @@ msgstr "Crie layouts avançados e designs responsivos, usando os elementos de co
 msgid "Get more capabilities for less with exclusive discounts. Limited time only."
 msgstr "Tenha mais recursos por menos, com descontos exclusivos. Oferta por tempo limitado."
 
-#: modules/promotions/module.php:137
-msgid "Sale!"
-msgstr "Oferta!"
-
-#: modules/promotions/conversion-banner.php:241
-msgid "Get Discounts"
-msgstr "Receber descontos"
-
-#: modules/promotions/conversion-banner.php:238
-msgid "Upgrade your workflow with more capabilities for less. Offer ends June 17."
-msgstr "Melhore seu fluxo de trabalho com mais recursos, por um preço menor. A promoção termina em 17 de junho."
-
-#: modules/promotions/conversion-banner.php:237
-#: modules/promotions/conversion-banner.php:248
-msgid "Celebrate 10 years of Elementor"
-msgstr "Comemore os 10 anos do Elementor"
-
-#: modules/promotions/conversion-banner.php:230
+#: modules/promotions/conversion-banner.php:247
 msgid "Upgrade to Elementor Pro"
 msgstr "Atualizar para o Elementor Pro"
-
-#: core/admin/admin.php:377
-msgid "Sale! Upgrade Now"
-msgstr "Oferta! Atualizar agora"
 
 #: modules/usage/usage-reporter.php:41
 msgid "Recalculate"
@@ -1466,15 +1449,15 @@ msgstr "Quer criar uma experiência inclusiva? Instale o Web Accessibility, incl
 msgid "Addons"
 msgstr "Complementos"
 
-#: core/admin/admin.php:1142 includes/controls/gallery.php:163
+#: core/admin/admin.php:1151 includes/controls/gallery.php:163
 msgid "Image Optimization is installed and included in your ONE subscription. Activate it to optimize images and improve site performance."
 msgstr "O Image Optimization está instalado e incluído na sua assinatura do ONE. Ative-o para otimizar as imagens e melhorar o desempenho do site."
 
-#: core/admin/admin.php:771
+#: core/admin/admin.php:780
 msgid "Unable to create or access Site Settings page."
 msgstr "Não foi possível criar ou acessar a página de configurações do site."
 
-#: core/admin/admin-notices.php:650 core/admin/admin.php:1159
+#: core/admin/admin-notices.php:650 core/admin/admin.php:1168
 msgid "Speed up your website with Image Optimization"
 msgstr "Acelere seu site com o Image Optimization"
 
@@ -1482,7 +1465,7 @@ msgstr "Acelere seu site com o Image Optimization"
 msgid "Your ONE subscription includes Image Optimization. Activate it to optimize images and improve site performance."
 msgstr "Sua assinatura do ONE inclui o Image Optimization. Ative-o para otimizar imagens e melhorar o desempenho do site."
 
-#: core/admin/admin-notices.php:605 core/admin/admin.php:1138
+#: core/admin/admin-notices.php:605 core/admin/admin.php:1147
 msgid "Automatically optimize images to improve site speed and performance. Included with your ONE subscription."
 msgstr "Otimize automaticamente as imagens, para melhorar a velocidade e o desempenho do site. Incluído na sua assinatura do ONE."
 
@@ -1634,14 +1617,6 @@ msgstr "Nenhuma sessão de importação disponível para reverter."
 msgid "This file"
 msgstr "Este arquivo"
 
-#: modules/promotions/pointers/black-friday.php:31
-msgid "Save big on Elementor Pro and unlock the tools to design without limits."
-msgstr "Economize muito com o Elementor Pro e libere as ferramentas para criar designs sem restrições."
-
-#: modules/promotions/pointers/black-friday.php:30
-msgid "Black Friday Is On!"
-msgstr "Começou a Black Friday!"
-
 #: includes/settings/settings.php:374
 msgid "Load Google fonts locally to benefit from faster performance and ensure GDPR compliance. Fonts will be served from your own server instead of Google’s. Only the very first load (in the editor and on the front end) may take slightly longer."
 msgstr "Carregue as fontes do Google localmente para se beneficiar de um desempenho mais rápido e garantir a conformidade com o GDPR. As fontes serão disponibilizadas pelo seu próprio servidor em vez do servidor do Google. Apenas o primeiro carregamento (no editor e na interface) pode demorar um pouco mais."
@@ -1668,56 +1643,56 @@ msgstr "O array de operações não pode estar vazio"
 msgid "Watermark must be a non-negative integer"
 msgstr "A marca d'água precisa ser um número inteiro não negativo"
 
-#: modules/pro-install/connect-page-renderer.php:168
+#: modules/pro-install/connect-page-renderer.php:191
 msgid "Activate Elementor Pro"
 msgstr "Ativar o Elementor Pro"
 
-#: modules/pro-install/connect-page-renderer.php:167
+#: modules/pro-install/connect-page-renderer.php:190
 msgid "Enjoy full access to powerful design tools, advanced widgets, and everything you need to create next-level websites."
 msgstr "Aproveite o acesso total a ferramentas de design poderosas, widgets avançados e tudo o que você precisa para criar sites de alto nível."
 
-#: modules/pro-install/connect-page-renderer.php:153
+#: modules/pro-install/connect-page-renderer.php:176
 msgid "You've got Elementor Pro"
 msgstr "Você tem o Elementor Pro"
 
-#: modules/pro-install/connect-page-renderer.php:141
+#: modules/pro-install/connect-page-renderer.php:140
 msgid "Pro Upgrade"
 msgstr "Atualização Pro"
 
-#: modules/pro-install/connect-page-renderer.php:133
+#: modules/pro-install/connect-page-renderer.php:136
 msgid "Build custom headers, footers, forms, popups, and WooCommerce stores."
 msgstr "Crie cabeçalhos, rodapés, formulários, pop-ups e lojas WooCommerce personalizados."
 
-#: modules/pro-install/connect-page-renderer.php:132
+#: modules/pro-install/connect-page-renderer.php:135
 msgid "Upgrade to Pro to unlock powerful design tools and advanced features."
 msgstr "Atualize para o Pro para liberar ferramentas de design poderosas e recursos avançados."
 
-#: modules/pro-install/connect-page-renderer.php:103
+#: modules/pro-install/connect-page-renderer.php:106
 msgid "Want to disconnect for any reason?"
 msgstr "Quer se desconectar por algum motivo?"
 
 #. translators: %s: Connected user.
-#: modules/pro-install/connect-page-renderer.php:94
+#: modules/pro-install/connect-page-renderer.php:97
 msgid "You're connected as %s."
 msgstr "Você está conectado como %s."
 
-#: modules/pro-install/connect-page-renderer.php:81
+#: modules/pro-install/connect-page-renderer.php:84
 msgid "My Account"
 msgstr "Minha conta"
 
-#: modules/pro-install/connect-page-renderer.php:78
+#: modules/pro-install/connect-page-renderer.php:81
 msgid "Connected"
 msgstr "Conectado"
 
-#: modules/pro-install/connect-page-renderer.php:56
+#: modules/pro-install/connect-page-renderer.php:59
 msgid "Gain access to dozens of professionally designed templates, and connect your site to your My Elementor Dashboard."
 msgstr "Tenha acesso a dezenas de modelos criados por profissionais e conecte seu site ao painel “Meu Elementor”."
 
-#: modules/pro-install/connect-page-renderer.php:53
+#: modules/pro-install/connect-page-renderer.php:56
 msgid "Connect your Elementor Account"
 msgstr "Conectar sua conta do Elementor"
 
-#: modules/pro-install/connect-page-renderer.php:31
+#: modules/pro-install/connect-page-renderer.php:34
 #: modules/pro-install/editor-one-connect-account-menu-item.php:40
 #: modules/pro-install/pro-install-menu-item.php:25
 msgid "Connect Settings"
@@ -1729,7 +1704,7 @@ msgstr "Configurações de conexão"
 msgid "There are no available subscriptions at the moment."
 msgstr "No momento, não há assinaturas disponíveis."
 
-#: core/admin/admin.php:763 core/admin/admin.php:794
+#: core/admin/admin.php:772 core/admin/admin.php:803
 #: modules/pro-install/module.php:54
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Você não tem permissões suficientes para acessar esta página."
@@ -1887,7 +1862,7 @@ msgstr "Aplicar um modelo de site"
 msgid "Import/Export Customization"
 msgstr "Personalização da importação/exportação"
 
-#: modules/mcp/abilities/manage-variable-ability.php:170
+#: modules/mcp/abilities/manage-variable-ability.php:171
 #: modules/variables/classes/rest-api.php:461
 msgid "Unexpected server error"
 msgstr "Erro inesperado no servidor"
@@ -2150,7 +2125,7 @@ msgid "States"
 msgstr "Estados"
 
 #: modules/promotions/pointers/birthday.php:35
-#: modules/promotions/pointers/black-friday.php:35
+#: modules/promotions/pointers/promotional-pointer.php:49
 msgid "View Deals"
 msgstr "Ver ofertas"
 
@@ -3607,14 +3582,10 @@ msgstr "Reduza o tamanho do DOM eliminando as tags HTML em vários elementos e w
 msgid "Optimized Markup"
 msgstr "Marcação otimizada"
 
-#: core/admin/admin.php:1147 includes/controls/gallery.php:169
+#: core/admin/admin.php:1156 includes/controls/gallery.php:169
 #: includes/controls/media.php:363
 msgid "Optimize your images to enhance site performance by using Image Optimization."
 msgstr "Otimize suas imagens para melhorar o desempenho do site usando o Image Optimization."
-
-#: modules/promotions/admin-menu-items/go-pro-promotion-item.php:33
-msgid "Upgrade Sale Now"
-msgstr "Promoção para atualizar agora"
 
 #: core/admin/admin-notices.php:626
 msgid "Automatically compress and optimize images, resize larger files, or convert to WebP. Optimize images individually, in bulk, or on upload."
@@ -3666,7 +3637,7 @@ msgstr "Atualize para a versão %s e volte a criar!"
 msgid "Elementor isn’t running because PHP is outdated."
 msgstr "O Elementor não está funcionando porque o PHP está desatualizado."
 
-#: core/files/uploads-manager.php:659
+#: core/files/uploads-manager.php:661
 msgid "You do not have permission to upload JSON files."
 msgstr "Você não tem permissão para enviar arquivos JSON."
 
@@ -3877,7 +3848,7 @@ msgstr "Você não tem permissão para acessar este modelo."
 msgid "Invalid template type or template does not exist."
 msgstr "Tipo de modelo inválido ou modelo não existe."
 
-#: includes/managers/controls.php:1270 modules/promotions/module.php:262
+#: includes/managers/controls.php:1270 modules/promotions/module.php:283
 #: assets/js/editor.js:37588
 #: assets/js/packages/editor-controls/editor-controls.js:35478
 #: assets/js/packages/editor-controls/editor-controls.strings.js:32
@@ -3894,8 +3865,8 @@ msgstr "Defina as localizações e o ângulo de cada ponto de interrupção para
 
 #: core/admin/admin-notices.php:451 core/admin/admin-notices.php:475
 #: core/admin/admin-notices.php:551 core/admin/admin-notices.php:606
-#: core/admin/admin-notices.php:629 core/admin/admin.php:1139
-#: core/admin/admin.php:1149 core/utils/hints.php:481
+#: core/admin/admin-notices.php:629 core/admin/admin.php:1148
+#: core/admin/admin.php:1158 core/utils/hints.php:481
 #: includes/controls/gallery.php:159 includes/controls/gallery.php:171
 #: includes/controls/media.php:353 includes/controls/media.php:365
 #: includes/widgets/heading.php:510 includes/widgets/heading.php:532
@@ -3904,8 +3875,8 @@ msgstr "Instalar agora"
 
 #: core/admin/admin-notices.php:461 core/admin/admin-notices.php:484
 #: core/admin/admin-notices.php:548 core/admin/admin-notices.php:616
-#: core/admin/admin-notices.php:638 core/admin/admin.php:1143
-#: core/admin/admin.php:1152 core/utils/hints.php:482
+#: core/admin/admin-notices.php:638 core/admin/admin.php:1152
+#: core/admin/admin.php:1161 core/utils/hints.php:482
 #: includes/controls/gallery.php:164 includes/controls/gallery.php:175
 #: includes/controls/media.php:358 includes/controls/media.php:369
 #: includes/widgets/heading.php:520 includes/widgets/heading.php:535
@@ -3927,7 +3898,7 @@ msgstr "Atenção"
 msgid "Enable the option to upload JSON files"
 msgstr "Ativar a opção para enviar arquivos JSON"
 
-#: core/files/uploads-manager.php:360
+#: core/files/uploads-manager.php:362
 msgid "Invalid file name."
 msgstr "Nome de arquivo inválido."
 
@@ -4039,6 +4010,7 @@ msgstr "Gerenciador de elementos"
 #: includes/editor-templates/templates.php:580
 #: includes/editor-templates/templates.php:687
 #: modules/promotions/conversion-banner.php:223
+#: modules/promotions/conversion-banner.php:240
 #: modules/promotions/widgets/atomic-form-widget-promotion.php:85
 #: modules/promotions/widgets/collection-loop-widget-promotion.php:57
 #: assets/js/ai-admin.js:1623 assets/js/ai-admin.js:1670
@@ -4432,7 +4404,7 @@ msgstr "Caixa"
 msgid "Changes will be reflected only after %1$s saving %3$s and %2$s reloading %3$s preview."
 msgstr "As alterações serão refletidas apenas após %1$s salvar %3$s e %2$s recarregar %3$s a pré-visualização."
 
-#: core/admin/admin.php:661
+#: core/admin/admin.php:670
 msgid "Build Smart with AI"
 msgstr "Construa de forma inteligente com IA"
 
@@ -4549,7 +4521,7 @@ msgstr "Ordem"
 msgid "Invalid template type."
 msgstr "Tipo de modelo inválido."
 
-#: core/admin/admin.php:375
+#: core/admin/admin.php:382 core/admin/admin.php:385
 msgid "Get Elementor Pro"
 msgstr "Obter o Elementor Pro"
 
@@ -4689,8 +4661,8 @@ msgstr "Tablet no modo paisagem"
 msgid "Tablet Portrait"
 msgstr "Tablet no modo retrato"
 
-#: core/admin/admin-notices.php:706 core/admin/admin.php:1175
-#: modules/promotions/conversion-banner.php:186
+#: core/admin/admin-notices.php:706 core/admin/admin.php:1184
+#: modules/promotions/conversion-banner.php:187
 msgid "Dismiss this notice."
 msgstr "Dispensar esta notificação."
 
@@ -5008,7 +4980,7 @@ msgstr "Anotações"
 #: modules/promotions/admin-menu-items/base-promotion-item.php:32
 #: modules/promotions/admin-menu-items/base-promotion-template.php:37
 #: modules/promotions/admin-menu-items/editor-one-popups-menu.php:25
-#: modules/promotions/module.php:137 modules/promotions/promotion-data.php:71
+#: modules/promotions/promotion-data.php:71
 #: modules/promotions/promotion-data.php:88
 #: modules/promotions/promotion-data.php:105
 #: modules/promotions/promotion-data.php:122
@@ -5030,7 +5002,7 @@ msgstr "Anotações"
 msgid "Upgrade Now"
 msgstr "Atualizar agora"
 
-#: core/admin/admin.php:665 core/role-manager/role-manager.php:237
+#: core/admin/admin.php:674 core/role-manager/role-manager.php:237
 #: includes/editor-templates/panel-elements.php:39
 #: includes/editor-templates/panel-elements.php:65
 #: includes/editor-templates/panel.php:267
@@ -5040,7 +5012,7 @@ msgstr "Atualizar agora"
 #: includes/widgets/heading.php:158 includes/widgets/image-carousel.php:127
 #: includes/widgets/image-gallery.php:107 includes/widgets/testimonial.php:113
 #: includes/widgets/video.php:128
-#: modules/promotions/admin-menu-items/go-pro-promotion-item.php:30
+#: modules/promotions/admin-menu-items/go-pro-promotion-item.php:36
 #: modules/promotions/promotion-data.php:64
 #: modules/promotions/promotion-data.php:81
 #: modules/promotions/promotion-data.php:98
@@ -6094,7 +6066,7 @@ msgstr "Modo de privacidade"
 msgid "Save Changes"
 msgstr "Salvar alterações"
 
-#: modules/pro-install/connect-page-renderer.php:168
+#: modules/pro-install/connect-page-renderer.php:191
 msgid "Install & Activate"
 msgstr "Instalar e ativar"
 
@@ -6312,11 +6284,11 @@ msgid "Download"
 msgstr "Baixar"
 
 #. translators: %1$s Link open tag, %2$s: Link close tag.
-#: core/admin/admin.php:976
+#: core/admin/admin.php:985
 msgid "The latest update includes some substantial changes across different areas of the plugin. We highly recommend you %1$sbackup your site before upgrading%2$s, and make sure you first update in a staging environment"
 msgstr "A atualização mais recente inclui algumas alterações substanciais em diferentes áreas do plugin. É altamente recomendável que você faça um %1$sbackup do seu site antes de atualizar%2$s e certifique-se de atualizar primeiro em um ambiente de teste"
 
-#: core/admin/admin.php:970
+#: core/admin/admin.php:979
 msgid "Heads up, Please backup before upgrade!"
 msgstr "Atenção, faça backup antes de atualizar!"
 
@@ -6495,7 +6467,7 @@ msgstr "Os atributos permitem que você adicione atributos HTML personalizados a
 msgid "Meet Our Attributes"
 msgstr "Conheça nossos atributos"
 
-#: includes/managers/controls.php:1204 modules/promotions/module.php:256
+#: includes/managers/controls.php:1204 modules/promotions/module.php:277
 #: assets/js/packages/editor-controls/editor-controls.js:35517
 #: assets/js/packages/editor-controls/editor-controls.strings.js:31
 msgid "Attributes"
@@ -6996,7 +6968,7 @@ msgstr "O arquivo .htaccess do seu site parece estar faltando."
 msgid "Some of your theme files are missing."
 msgstr "Alguns dos arquivos do seu tema estão faltando."
 
-#: core/files/file-types/svg.php:73 core/files/uploads-manager.php:660
+#: core/files/file-types/svg.php:73 core/files/uploads-manager.php:662
 msgid "This file is not allowed for security reasons."
 msgstr "Este arquivo não é permitido por motivos de segurança."
 
@@ -7423,14 +7395,14 @@ msgstr "Pagina inicial"
 msgid "Create"
 msgstr "Criar"
 
-#: modules/pro-install/connect-page-renderer.php:61
+#: modules/pro-install/connect-page-renderer.php:64
 #: assets/js/packages/editor-app-bar/editor-app-bar.js:697
 #: assets/js/packages/editor-app-bar/editor-app-bar.strings.js:10
 msgid "Connect to Elementor"
 msgstr "Conectar com o Elementor"
 
 #: core/common/modules/connect/apps/base-app.php:87
-#: modules/pro-install/connect-page-renderer.php:105
+#: modules/pro-install/connect-page-renderer.php:108
 msgid "Disconnect"
 msgstr "Desconectar"
 
@@ -7763,7 +7735,7 @@ msgid "New Template"
 msgstr "Novo modelo"
 
 #. translators: 1: Elementor, 2: Link to plugin review
-#: core/admin/admin.php:441
+#: core/admin/admin.php:450
 msgid "Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!"
 msgstr "Gostando do %1$s? Deixe-nos uma classificação de %2$s. Agradecemos muito pelo seu apoio!"
 
@@ -7964,7 +7936,7 @@ msgstr "Defina quantos slides são rolados por deslizamento."
 msgid "Note: Attachment Fixed works only on desktop."
 msgstr "Observação: A fixação de anexos funciona apenas no desktop."
 
-#: core/admin/admin.php:510
+#: core/admin/admin.php:519
 msgid "Create New Post"
 msgstr "Criar novo post"
 
@@ -8223,32 +8195,32 @@ msgstr "Decoração"
 msgid "Unlinked values"
 msgstr "Valores desvinculados"
 
-#: core/admin/admin.php:650
+#: core/admin/admin.php:659
 msgid "Blog"
 msgstr "Blog"
 
-#: core/admin/admin.php:630
+#: core/admin/admin.php:639
 msgid "(opens in a new window)"
 msgstr "(abre em uma nova janela)"
 
-#: core/admin/admin.php:598
+#: core/admin/admin.php:607
 msgid "News & Updates"
 msgstr "Notícias e atualizações"
 
-#: core/admin/admin.php:565
+#: core/admin/admin.php:574
 msgctxt "Dashboard Overview Widget Recently Date"
 msgid "M jS"
 msgstr "j \\d\\e M"
 
-#: core/admin/admin.php:557
+#: core/admin/admin.php:566
 msgid "Recently Edited"
 msgstr "Editado recentemente"
 
-#: core/admin/admin.php:507
+#: core/admin/admin.php:516
 msgid "Create New Page"
 msgstr "Criar nova página"
 
-#: core/admin/admin.php:461
+#: core/admin/admin.php:470
 msgid "Elementor Overview"
 msgstr "Visão geral do Elementor"
 
@@ -8635,7 +8607,7 @@ msgid "Disable"
 msgstr "Desativar"
 
 #: core/base/document.php:2051 modules/ai/preferences.php:67
-#: modules/pro-install/connect-page-renderer.php:77
+#: modules/pro-install/connect-page-renderer.php:80
 #: assets/js/element-manager-admin.js:1955
 #: assets/js/element-manager-admin.js:2261
 #: assets/js/element-manager-admin.js:2383
@@ -8960,19 +8932,19 @@ msgstr "Marcar esta caixa desativará as fontes padrão do Elementor e fará com
 msgid "Checking this box will disable Elementor's Default Colors, and make Elementor inherit the colors from your theme."
 msgstr "Marcar esta caixa desativará as cores padrão do Elementor e fará com que o Elementor herde as cores do seu tema."
 
-#: core/admin/admin.php:406
+#: core/admin/admin.php:415
 msgid "Video Tutorials"
 msgstr "Tutoriais em vídeo"
 
-#: core/admin/admin.php:406
+#: core/admin/admin.php:415
 msgid "View Elementor Video Tutorials"
 msgstr "Ver tutoriais em vídeo do Elementor"
 
-#: core/admin/admin.php:405
+#: core/admin/admin.php:414
 msgid "Docs & FAQs"
 msgstr "Documentação e perguntas frequentes"
 
-#: core/admin/admin.php:405
+#: core/admin/admin.php:414
 msgid "View Elementor Documentation"
 msgstr "Ver a documentação do Elementor"
 
@@ -9824,7 +9796,7 @@ msgstr "Formulário"
 msgid "Elements"
 msgstr "Elementos"
 
-#: core/admin/admin.php:371
+#: core/admin/admin.php:375
 #: core/common/modules/finder/categories/settings.php:29
 #: core/dynamic-tags/base-tag.php:176 includes/managers/controls.php:339
 #: includes/settings/admin-menu-items/editor-one-settings-menu.php:33
@@ -11641,7 +11613,7 @@ msgstr "Pré-visualizar"
 msgid "Save"
 msgstr "Salvar"
 
-#: core/admin/admin.php:654
+#: core/admin/admin.php:663
 msgid "Help"
 msgstr "Ajuda"
 
@@ -11691,7 +11663,7 @@ msgstr "Pesquisar widget..."
 msgid "Add New Section"
 msgstr "Adicionar nova seção"
 
-#: core/admin/admin.php:270
+#: core/admin/admin.php:274
 #: core/editor/loader/templates/editor-body-view.php:23
 #: includes/editor-templates/templates.php:66 modules/gutenberg/module.php:126
 #: assets/js/ai-admin.js:12895 assets/js/ai-gutenberg.js:12955
@@ -11702,8 +11674,8 @@ msgid "Loading"
 msgstr "Carregando"
 
 #. Plugin Name of the plugin
-#: elementor.php app/view.php:23 core/admin/admin.php:320
-#: core/admin/admin.php:442 core/admin/admin.php:520
+#: elementor.php app/view.php:23 core/admin/admin.php:324
+#: core/admin/admin.php:451 core/admin/admin.php:529
 #: core/admin/menu/main.php:13 core/admin/menu/main.php:14
 #: core/documents-manager.php:384 core/upgrade/custom-tasks-manager.php:29
 #: core/upgrade/manager.php:49 includes/editor-templates/navigator.php:94
@@ -12180,7 +12152,7 @@ msgstr "Superior"
 msgid "Default"
 msgstr "Padrão"
 
-#: core/admin/admin.php:251 core/admin/admin.php:259 core/base/document.php:664
+#: core/admin/admin.php:255 core/admin/admin.php:263 core/base/document.php:664
 #: modules/admin-bar/module.php:124 modules/gutenberg/module.php:104
 #: modules/gutenberg/module.php:115 modules/gutenberg/module.php:137
 #: assets/js/e-wc-product-editor.js:147

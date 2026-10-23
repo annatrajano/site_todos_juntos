@@ -887,32 +887,18 @@ trait Login_Registration {
 			if ( ! empty( $settings['register_user_role'] ) ) {
 				$requested_role = sanitize_text_field( $settings['register_user_role'] );
 
-				// Verify the post was last saved by an administrator before trusting
-				$last_editor_id = (int) get_post_meta( $page_id, '_edit_last', true );
-				if ( ! $last_editor_id ) {
-					$last_editor_id = (int) get_post_field( 'post_author', $page_id );
-				}
-				$last_editor    = $last_editor_id ? get_userdata( $last_editor_id ) : false;
-				$saved_by_admin = $last_editor && in_array( 'administrator', (array) $last_editor->roles, true );
-
-				if ( $saved_by_admin ) {
-					// Reject any role that carries privileged capabilities,
-					$wp_role         = get_role( $requested_role );
-					$privileged_caps = [ 'manage_options', 'edit_users', 'delete_users', 'promote_users' ];
-					$is_safe_role    = ( $wp_role !== null );
-
-					if ( $is_safe_role ) {
-						foreach ( $privileged_caps as $cap ) {
-							if ( ! empty( $wp_role->capabilities[ $cap ] ) ) {
-								$is_safe_role = false;
-								break;
-							}
-						}
-					}
-
-					if ( $is_safe_role ) {
-						$user_data['role'] = $requested_role;
-					}
+				// SECURITY: the role to assign lives in the widget's _elementor_data,
+				// which is editable by ANY user who can edit this page — the post author
+				// directly, or others through the REST post-meta endpoint / Elementor's
+				// AJAX save. None of those write paths update _edit_last, so "the post was
+				// last saved by an administrator" is NOT a trustworthy signal: a lower-
+				// privileged author can set register_user_role to an elevated role while an
+				// administrator stays recorded in _edit_last. Only honour the configured
+				// role when it is actually safe to assign to a self-registrant and every
+				// user who controls this page is permitted to create it; otherwise fall
+				// through to the site default role.
+				if ( $this->eael_can_assign_registration_role( $requested_role, $page_id ) ) {
+					$user_data['role'] = $requested_role;
 				}
 			}
 
@@ -959,6 +945,17 @@ trait Login_Registration {
 		// Email OTP Verification gate (Registration)
 		// ============================================================
 		if ( ! empty( $settings['enable_register_otp'] ) && 'yes' === $settings['enable_register_otp'] ) {
+			// Limit new OTP sessions per recipient and per IP before anything is created (#946).
+			if ( $this->eael_otp_register_rate_limited( $user_data['user_email'] ) ) {
+				$err_msg = __( 'Too many verification requests. Please wait a few minutes and try again.', 'essential-addons-for-elementor-lite' );
+				if ( $ajax ) {
+					wp_send_json_error( $err_msg );
+				}
+				setcookie( 'eael_register_errors_' . $widget_id, $err_msg );
+				wp_safe_redirect( esc_url_raw( $url ) );
+				exit();
+			}
+
 			$otp_payload = [
 				'user_data'              => $user_data,
 				'plain_password'         => $password,
@@ -1013,6 +1010,8 @@ trait Login_Registration {
 				update_user_meta( $pending_user_id, '_eael_otp_pending', '1' );
 				update_user_meta( $pending_user_id, '_eael_otp_pending_since', time() );
 
+				$this->eael_mark_pending_approval( $pending_user_id );
+
 				do_action( 'eael/login-register/after-insert-user', $pending_user_id, $user_data, $settings );
 
 				// On verify we only need the id; clear the heavy data so the transient stays small.
@@ -1059,8 +1058,8 @@ trait Login_Registration {
 		$user_id = wp_insert_user( $user_data );
 
 		// Admin Approval: mark newly registered user as pending
-		if ( 'on' === get_option( 'eael_lr_admin_approval' ) && ! is_wp_error( $user_id ) ) {
-			update_user_meta( $user_id, 'eael_registration_status', 'pending' );
+		if ( ! is_wp_error( $user_id ) ) {
+			$this->eael_mark_pending_approval( $user_id );
 		}
 
 		if( count( $eael_custom_profile_fields_image ) ){
@@ -1790,6 +1789,123 @@ trait Login_Registration {
 	}
 
 	/**
+	 * Decide whether the public registration form may assign $requested_role to a
+	 * brand-new, self-registered account.
+	 *
+	 * The role comes from the widget's _elementor_data, which is editable by anyone with
+	 * edit access to the page (the post author directly; others via the REST post-meta
+	 * endpoint or Elementor's AJAX save). Those write paths do NOT touch _edit_last, so it
+	 * cannot be trusted as a proxy for "an administrator approved this role". A role is
+	 * honoured only when ALL of the following hold:
+	 *   1. the role exists;
+	 *   2. it carries none of a denylist of privilege-escalating capabilities — a
+	 *      self-registrant must never receive site-management power (defence in depth); and
+	 *   3. every user who controls this page's content is allowed to create users, i.e. is
+	 *      effectively an administrator. The post author can always rewrite the page, and
+	 *      _edit_last is the other recorded editor; if either is a lower-privileged user,
+	 *      the configured role is untrusted and ignored.
+	 *
+	 * Behaviour note: registration pages intended to assign a custom role must be owned by
+	 * an administrator. A page owned by a non-admin falls back to the site default role,
+	 * which is the safe direction.
+	 *
+	 * @param string $requested_role Role slug from the widget settings.
+	 * @param int    $page_id        Page/post holding the Login|Register widget.
+	 *
+	 * @return bool True only when the role is safe to assign.
+	 */
+	/**
+	 * Remember who last wrote a post's Elementor data (widget settings).
+	 *
+	 * Hooked to `added_post_meta` / `updated_post_meta`, so it covers every path that
+	 * stores `_elementor_data` — Elementor's save, the REST API, imports — unlike
+	 * `_edit_last`, which only the wp-admin edit screen updates. Writes without a
+	 * logged-in user (cron, Elementor data migrations, WP-CLI) keep the last recorded
+	 * user. The key is protected (leading underscore, not registered for REST), so it
+	 * cannot be set directly. Read through Helper::eael_page_responsible_user_ids().
+	 *
+	 * @param int    $meta_id    Meta row ID.
+	 * @param int    $post_id    Post ID.
+	 * @param string $meta_key   Meta key.
+	 * @param mixed  $meta_value Meta value.
+	 */
+	public function eael_record_register_settings_author( $meta_id, $post_id, $meta_key, $meta_value ) {
+		if ( '_elementor_data' !== $meta_key ) {
+			return;
+		}
+
+		$user_id = get_current_user_id();
+		if ( $user_id ) {
+			update_post_meta( $post_id, Helper::ELEMENTOR_DATA_AUTHOR_KEY, $user_id );
+		}
+	}
+
+	protected function eael_can_assign_registration_role( $requested_role, $page_id ) {
+		$requested_role = (string) $requested_role;
+		$page_id        = (int) $page_id;
+
+		if ( '' === $requested_role || ! $page_id ) {
+			return false;
+		}
+
+		// 1. The role must exist.
+		$wp_role = get_role( $requested_role );
+		if ( null === $wp_role ) {
+			return false;
+		}
+
+		// 2. Never allow self-registration to grant user-management or site-infrastructure
+		//    capabilities. This list is deliberately limited to true site-takeover caps —
+		//    none of which the standard editor/author/contributor roles hold — so an
+		//    administrator can still legitimately configure those roles (step 3) while a
+		//    role that could manage users, plugins, themes or core is always rejected.
+		$privileged_caps = [
+			'manage_options', 'edit_users', 'create_users', 'delete_users',
+			'promote_users', 'remove_users', 'list_users', 'activate_plugins',
+			'install_plugins', 'update_plugins', 'edit_plugins', 'install_themes',
+			'switch_themes', 'edit_themes', 'edit_theme_options', 'update_core',
+			'edit_files', 'manage_network', 'manage_sites',
+		];
+		foreach ( $privileged_caps as $cap ) {
+			if ( ! empty( $wp_role->capabilities[ $cap ] ) ) {
+				return false;
+			}
+		}
+
+		//    Capabilities can also be granted at run time through `user_has_cap` (role and
+		//    membership plugins), so test a stand-in user holding only this role as well.
+		$probe          = new \WP_User();
+		$probe->roles   = [ $requested_role ];
+		$probe->caps    = [ $requested_role => true ];
+		$probe->allcaps = array_merge( (array) $wp_role->capabilities, [ $requested_role => true ] );
+		foreach ( $privileged_caps as $cap ) {
+			if ( $probe->has_cap( $cap ) ) {
+				return false;
+			}
+		}
+
+		// 3. Every user who can control this page's content must be allowed to create
+		//    users: the post author, the last wp-admin editor and whoever last wrote the
+		//    widget settings on any path (Elementor, REST, import), which _edit_last
+		//    misses. When the form is a global widget, its settings live in the template,
+		//    so the template's users count too. All must be create_users-capable.
+		$responsible_ids = Helper::eael_widget_settings_responsible_user_ids( $page_id, 'eael-login-register' );
+
+		if ( empty( $responsible_ids ) ) {
+			return false;
+		}
+
+		foreach ( $responsible_ids as $uid ) {
+			$user = get_userdata( $uid );
+			if ( ! $user || ! user_can( $user, 'create_users' ) ) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
 	 * It store data temporarily,5 minutes by default
 	 *
 	 * @param     $name
@@ -2280,6 +2396,43 @@ trait Login_Registration {
 	 * @param string $direct_url Absolute URL of the page hosting the widget.
 	 * @return array { token, expiry, cooldown } or WP_Error on failure.
 	 */
+	/**
+	 * Count a new registration OTP request and report whether it is over the limit.
+	 *
+	 * The resend cooldown only applies to an existing session, so without this every
+	 * new registration request sent another email. Defaults: 3 per recipient and
+	 * 10 per IP address in 15 minutes, filterable through
+	 * `eael/login-register/otp_register_rate_limit`.
+	 *
+	 * @param string $email Recipient address.
+	 * @return bool True when the request must be refused.
+	 */
+	protected function eael_otp_register_rate_limited( $email ) {
+		$limits = apply_filters( 'eael/login-register/otp_register_rate_limit', [
+			'per_email' => 3,
+			'per_ip'    => 10,
+			'window'    => 15 * MINUTE_IN_SECONDS,
+		] );
+
+		$ip      = ! empty( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : ''; //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
+		$buckets = [
+			'eael_otp_rl_e_' . md5( strtolower( (string) $email ) ) => (int) $limits['per_email'],
+			'eael_otp_rl_i_' . md5( $ip )                           => (int) $limits['per_ip'],
+		];
+
+		foreach ( $buckets as $key => $max ) {
+			if ( $max > 0 && (int) get_transient( $key ) >= $max ) {
+				return true;
+			}
+		}
+
+		foreach ( $buckets as $key => $max ) {
+			set_transient( $key, (int) get_transient( $key ) + 1, (int) $limits['window'] );
+		}
+
+		return false;
+	}
+
 	protected function eael_otp_create_session( $flow, $payload, $email, $widget_id, $page_id, $settings, $direct_url = '' ) {
 		$prefix         = ( 'login' === $flow ) ? 'login' : 'register';
 		$expiry_minutes = ! empty( $settings[ "{$prefix}_otp_expiry" ] ) ? max( 1, (int) $settings[ "{$prefix}_otp_expiry" ] ) : 5;
@@ -2498,6 +2651,10 @@ trait Login_Registration {
 			delete_user_meta( $user_id, '_eael_otp_pending' );
 			delete_user_meta( $user_id, '_eael_otp_pending_since' );
 
+			// Normally set when the user was pre-created; repeated so an account created
+			// before this fix still ends up pending.
+			$this->eael_mark_pending_approval( $user_id );
+
 			$user_data = [
 				'user_login' => $user->user_login,
 				'user_email' => $user->user_email,
@@ -2521,6 +2678,8 @@ trait Login_Registration {
 						: __( 'Sorry, something went wrong. User could not be registered.', 'essential-addons-for-elementor-lite' )
 				);
 			}
+
+			$this->eael_mark_pending_approval( $user_id );
 
 			if ( ! empty( $user_data['eael_phone_number'] ) ) {
 				update_user_meta( $user_id, 'eael_phone_number', $user_data['eael_phone_number'] );
@@ -2557,8 +2716,8 @@ trait Login_Registration {
 			update_option( 'eael_register_success_' . $session['widget_id'], 1, false );
 		}
 
-		// Optional auto-login.
-		if ( in_array( 'auto_login', $register_actions, true ) && ! is_user_logged_in() ) {
+		// Optional auto-login. Skipped while Admin Approval is on, as in the standard flow.
+		if ( in_array( 'auto_login', $register_actions, true ) && ! is_user_logged_in() && 'on' !== get_option( 'eael_lr_admin_approval' ) ) {
 			wp_signon( [
 				'user_login'    => $user_data['user_login'],
 				'user_password' => isset( $payload['plain_password'] ) ? $payload['plain_password'] : '',
@@ -3095,6 +3254,19 @@ trait Login_Registration {
 		return ! empty( $eael_elements['login-register'] );
 	}
 
+	/**
+	 * Mark an account created through an EA registration form as pending
+	 * while Administrator Approval is on. Every path that creates an account
+	 * must call this, so none of them can skip approval.
+	 *
+	 * @param int $user_id
+	 */
+	protected function eael_mark_pending_approval( $user_id ) {
+		if ( 'on' === get_option( 'eael_lr_admin_approval' ) && ! get_user_meta( $user_id, 'eael_registration_status', true ) ) {
+			update_user_meta( $user_id, 'eael_registration_status', 'pending' );
+		}
+	}
+
 	public function eael_block_pending_user_login( $user, $password ) {
 		if ( is_wp_error( $user ) ) {
 			return $user;
@@ -3280,7 +3452,7 @@ trait Login_Registration {
 			return;
 		}
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'manage_options' ) || ! $this->eael_can_manage_user_approval( $user_id ) ) {
 			return;
 		}
 
@@ -3339,6 +3511,27 @@ trait Login_Registration {
 	 * @param int[]  $user_ids     Array of selected user IDs.
 	 * @return string
 	 */
+	/**
+	 * May the current user change this account's approval state?
+	 *
+	 * `manage_options` is site-level; on a multisite network that does not cover
+	 * accounts on other sites. On Multisite, core never grants `edit_users` to
+	 * site administrators, so `edit_user` cannot be used there: a site admin may
+	 * manage members of their own site, and only network user managers may manage
+	 * anyone. On a single site the per-user `edit_user` check applies.
+	 *
+	 * @param int $user_id Target user.
+	 * @return bool
+	 */
+	protected function eael_can_manage_user_approval( $user_id ) {
+		if ( is_multisite() ) {
+			return current_user_can( 'manage_network_users' )
+				|| ( current_user_can( 'manage_options' ) && is_user_member_of_blog( $user_id ) );
+		}
+
+		return current_user_can( 'edit_user', $user_id );
+	}
+
 	public function eael_handle_bulk_approve_action( $redirect_url, $action, $user_ids ) {
 		if ( 'eael_approve_users' !== $action || ! current_user_can( 'manage_options' ) || ! $this->eael_is_admin_approval_active() ) {
 			return $redirect_url;
@@ -3355,6 +3548,9 @@ trait Login_Registration {
 				continue;
 			}
 			if ( user_can( $user_id, 'manage_options' ) ) {
+				continue;
+			}
+			if ( ! $this->eael_can_manage_user_approval( $user_id ) ) {
 				continue;
 			}
 
@@ -3405,6 +3601,9 @@ trait Login_Registration {
 				continue;
 			}
 			if ( user_can( $user_id, 'manage_options' ) ) {
+				continue;
+			}
+			if ( ! $this->eael_can_manage_user_approval( $user_id ) ) {
 				continue;
 			}
 
