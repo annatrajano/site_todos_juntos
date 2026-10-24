@@ -1,0 +1,5 @@
+
+# Backups do WordPress
+wp-content/ai1wm-backups/
+wp-content.tar.gz
+*.wpress
