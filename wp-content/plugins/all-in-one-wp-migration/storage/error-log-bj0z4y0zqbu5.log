@@ -1,0 +1,78 @@
+Oct 24 2026 17:23:29
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:29
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:29
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:29
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:30
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:30
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:30
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:31
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:31
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:31
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:32
+{"Number":2,"Message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/config.php): Failed to open stream: Permission denied","File":"\/var\/www\/html\/wp-content\/plugins\/all-in-one-wp-migration\/lib\/vendor\/servmask\/archiver\/class-ai1wm-compressor.php","Line":76}
+
+Oct 24 2026 17:23:32
+{"Number":2,"Message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/template.php): Failed to open stream: Permission denied","File":"\/var\/www\/html\/wp-content\/plugins\/all-in-one-wp-migration\/lib\/vendor\/servmask\/archiver\/class-ai1wm-compressor.php","Line":76}
+
+Oct 24 2026 17:23:32
+{"Number":2,"Message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/config-synced.php): Failed to open stream: Permission denied","File":"\/var\/www\/html\/wp-content\/plugins\/all-in-one-wp-migration\/lib\/vendor\/servmask\/archiver\/class-ai1wm-compressor.php","Line":76}
+
+Oct 24 2026 17:23:32
+{"Number":2,"Message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/config-livewaf.php): Failed to open stream: Permission denied","File":"\/var\/www\/html\/wp-content\/plugins\/all-in-one-wp-migration\/lib\/vendor\/servmask\/archiver\/class-ai1wm-compressor.php","Line":76}
+
+Oct 24 2026 17:23:32
+{"Number":2,"Message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/attack-data.php): Failed to open stream: Permission denied","File":"\/var\/www\/html\/wp-content\/plugins\/all-in-one-wp-migration\/lib\/vendor\/servmask\/archiver\/class-ai1wm-compressor.php","Line":76}
+
+Oct 24 2026 17:23:32
+{"Number":2,"Message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","File":"\/var\/www\/html\/wp-content\/plugins\/all-in-one-wp-migration\/lib\/vendor\/servmask\/archiver\/class-ai1wm-compressor.php","Line":76}
+
+Oct 24 2026 17:23:32
+{"Number":2,"Message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/config-transient.php): Failed to open stream: Permission denied","File":"\/var\/www\/html\/wp-content\/plugins\/all-in-one-wp-migration\/lib\/vendor\/servmask\/archiver\/class-ai1wm-compressor.php","Line":76}
+
+Oct 24 2026 17:23:32
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:34
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:38
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:39
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:40
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:41
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:41
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:42
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
+Oct 24 2026 17:23:42
+{"type":2,"message":"fopen(\/var\/www\/html\/wp-content\/wflogs\/ips.php): Failed to open stream: Permission denied","file":"\/var\/www\/html\/wp-content\/plugins\/wordfence\/vendor\/wordfence\/wf-waf\/src\/lib\/storage\/file.php","line":461}
+
